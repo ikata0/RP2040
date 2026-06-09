@@ -33,3 +33,11 @@ build
 
 .vscode/settings.json
 .vscode/c_cpp_properties.json
+/CMakeFiles
+*.cmake
+/pico-sdk
+generated/pico_base/pico/config_autogen.h
+Makefile
+/generated
+.claude/settings.local.json
+CMakeCache.txt

@@ -29,12 +29,12 @@
 //#define BOARD_PICOBOB_DLX_G540
 //#define BOARD_PICOHAL
 //#define BOARD_BTT_SKR_PICO_10
-//#define BOARD_BTT_SKR_PICO_10_HOTWIRE // Swaps spindle PWM and coolant outputs to utilize the bed heater (HB) output to control the hotwire. 
+//#define BOARD_BTT_SKR_PICO_10_HOTWIRE // Swaps spindle PWM and coolant outputs to utilize the bed heater (HB) output to controln the hotwire. 
 //#define BOARD_CNC_BOOSTERPACK
 //#define BOARD_CITOH_CX6000    // C.ITOH CX-6000 HPGL plotter
 //#define BOARD_GENERIC_4AXIS
 //#define BOARD_GENERIC_8AXIS
-//#define BOARD_MY_MACHINE      // Add my_machine_map.h before enabling this!
+#define BOARD_MY_MACHINE      // Add my_machine_map.h before enabling this!
 
 // Configuration
 // Uncomment to enable.
@@ -102,17 +102,17 @@
 // Optional control signals:
 // These will be assigned to aux input pins. Use the $pins command to check which pins are assigned.
 // NOTE: If not enough pins are available assignment will silently fail.
-//#define PROBE_ENABLE            0 // Default enabled, remove comment to disable probe input.
+#define PROBE_ENABLE            0 // Default enabled, remove comment to disable probe input.
 //#define PROBE2_ENABLE           1 // Enable second regular probe input, depending on the board the input assigned may be predefined.
 //#define TOOLSETTER_ENABLE       1 // Enable toolsetter input, depending on the board the input assigned may be predefined.
-//#define SAFETY_DOOR_ENABLE      1
-//#define MOTOR_FAULT_ENABLE      1
+#define SAFETY_DOOR_ENABLE      0
+#define MOTOR_FAULT_ENABLE      0
 //#define MOTOR_WARNING_ENABLE    1
 //#define PROBE_DISCONNECT_ENABLE 1
 //#define STOP_DISABLE_ENABLE     1
 //#define BLOCK_DELETE_ENABLE     1
 //#define SINGLE_BLOCK_ENABLE     1
-//#define LIMITS_OVERRIDE_ENABLE  1
+#define LIMITS_OVERRIDE_ENABLE  1
 
 // If the selected board map supports more than three motors ganging and/or auto-squaring
 // of axes can be enabled here.
