@@ -84,13 +84,13 @@
 #define AUXINPUT3_PIN           28 // Probe
 
 #if CONTROL_ENABLE & CONTROL_HALT
-#define RESET_PIN               AUXINPUT0_PIN
+//#define RESET_PIN               AUXINPUT0_PIN
 #endif
 #if CONTROL_ENABLE & CONTROL_FEED_HOLD
-#define FEED_HOLD_PIN           AUXINPUT1_PIN
+//#define FEED_HOLD_PIN           AUXINPUT1_PIN
 #endif
 #if CONTROL_ENABLE & CONTROL_CYCLE_START
-#define CYCLE_START_PIN         AUXINPUT2_PIN
+//#define CYCLE_START_PIN         AUXINPUT2_PIN
 #endif
 #if PROBE_ENABLE
 #define PROBE_PIN               AUXINPUT3_PIN
