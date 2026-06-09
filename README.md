@@ -15,4 +15,30 @@ For other boards choose the _pico_, _pico\_w_, _pico2_ or _pico2\_w_ board that 
 The board is selected in the lower right corner of the UI.
 
 ---
+
+### Fork customization: minimal direct-GPIO stepper test
+
+This fork adds a stripped-down board map for bench-testing steppers on a bare Pico, with **no CNC peripherals and no shift registers / I/O expanders**. STEP, DIR and ENABLE drive RP2040 GPIOs directly.
+
+**What was changed**
+- `my_machine.h` — enables `#define BOARD_MY_MACHINE` (which pulls in `boards/my_machine_map.h`); CNC features (probe, safety door, motor fault) left disabled.
+- `boards/my_machine_map.h` — rewritten from the shift-register PicoCNC layout to direct GPIO, based on `boards/generic_map.h`:
+  - `STEP_PORT GPIO_PIO` instead of `GPIO_SR8` — step pulses come straight off GPIOs via PIO, not a 74HC595.
+  - `DIRECTION_PORT GPIO_OUTPUT` / `ENABLE_PORT GPIO_OUTPUT` — plain GPIO outputs, no expander.
+
+**Pin map (3-axis, XYZ)**
+
+| Signal | GPIO |
+|---|---|
+| X / Y / Z step | 2 / 3 / 4 |
+| X / Y / Z dir | 5 / 6 / 7 |
+| Steppers enable (shared) | 8 |
+| X / Y / Z limits (optional, unconnected) | 9 / 10 / 11 |
+
+**Configuring**
+- Step pins are PIO-driven and **must be consecutive**; move them by changing `STEP_PINS_BASE`.
+- Direction uses `DIRECTION_OUTMODE GPIO_SHIFT5` (also consecutive). For non-contiguous dir pins set `DIRECTION_OUTMODE GPIO_MAP`.
+- STEP/DIR are single-ended only. For differential pairs (e.g. Mesa-style STEP±) feed each GPIO into an external RS-422 line driver (AM26LS31 / SN75174); the driver has no built-in complementary output.
+
+---
 2025-12-31
